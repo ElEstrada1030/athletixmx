@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>ATHLETIX MX | MULTI-ARCADE</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 4.4.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #050508, #0a1931, #002244);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #000, #0d6efd);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      filter: brightness(0.6) contrast(1.1);
+    }
+
+   /* Títulos */
+    .main-title {
+      text-align: center;
+      font-size: 42px;
+      margin-top: 40px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff);
+      -webkit-background-clip: text;
+      background-clip: text; /* ¡Esta es la línea que VS Code extrañaba! */
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 30px rgba(0, 242, 254, 0.3);
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 50px;
+      color: #a5c6f3;
+      font-weight: 300;
+    }
+
+    @media (min-width: 768px) {
+      .main-title { font-size: 55px; }
+      .subtitle { font-size: 22px; }
+    }
+
+    /* Tarjetas de Juego Estilo Premium (Glassmorphism) */
+    .game-card {
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto 60px auto;
+      padding: 40px 25px;
+      border-radius: 24px;
+      background: rgba(15, 25, 50, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 20px 40px rgba(0, 195, 255, 0.25);
+      border-color: rgba(0, 195, 255, 0.4);
+    }
+
+    .game-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Marcadores Estadisticos Internos */
+    .game-stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.05);
+      padding: 10px 20px;
+      border-radius: 50px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Botones de Control Generales */
+    .action-btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .action-btn:hover {
+      transform: scale(1.03);
+    }
+    .action-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* 1. JUEGO BOXEO */
+    .boxing-ring {
+      text-align: center;
+      padding: 20px;
+    }
+    .punching-bag {
+      width: 120px;
+      height: 180px;
+      background: #bdc3c7;
+      border-radius: 30px 30px 50px 50px;
+      margin: 20px auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      transition: background 0.1s ease, transform 0.1s ease;
+      border: 4px solid #7f8c8d;
+      position: relative;
+    }
+    .punching-bag::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 20px;
+      background: #7f8c8d;
+    }
+
+    /* 2. JUEGO FÚTBOL */
+    .stadium {
+      width: 100%;
+      height: 380px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop') center/cover;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .goal {
+      width: 75%;
+      max-width: 380px;
+      height: 140px;
+      border: 6px solid white;
+      border-bottom: none;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .goalkeeper {
+      width: 80px;
+      position: absolute;
+      bottom: 200px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .ball {
+      width: 50px;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.65s cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+
+    /* 3. JUEGO BÁSQUETBOL */
+    .court {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .meter-container {
+      width: 100%;
+      max-width: 400px;
+      height: 24px;
+      background: #222;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #444;
+      margin: 25px 0;
+    }
+    .target-zone {
+      width: 15%;
+      height: 100%;
+      background: #28a745;
+      position: absolute;
+      left: 42.5%;
+      box-shadow: 0 0 10px #28a745;
+    }
+    .indicator {
+      width: 6px;
+      height: 100%;
+      background: #fff;
+      position: absolute;
+      left: 0%;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    /* 4. JUEGO BÉISBOL */
+    .field-container {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .baseball-ball {
+      width: 30px;
+      height: 30px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.3);
+      box-shadow: 0 0 10px white;
+      display: none;
+    }
+    .hit-zone {
+      width: 100%;
+      height: 50px;
+      background: rgba(255, 171, 0, 0.2);
+      position: absolute;
+      bottom: 40px;
+      border-top: 2px dashed #ffab00;
+      border-bottom: 2px dashed #ffab00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #ffab00;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    /* 5. JUEGO TENIS */
+    .quiz-btn {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-align: left;
+      padding-left: 25px;
+    }
+    .quiz-btn:hover {
+      background: rgba(13, 110, 253, 0.2);
+      border-color: #0d6efd;
+    }
+    .tennis-correct {
+      background: #28a745 !important;
+      border-color: #28a745 !important;
+      text-shadow: 1px 1px 2px black;
+    }
+    .tennis-incorrect {
+      background: #dc3545 !important;
+      border-color: #dc3545 !important;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 90px;
+      text-align: center;
+      padding: 40px;
+      background: #030712;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Elementos Flotantes */
+    .particle {
+      position: fixed;
+      color: rgba(255,255,255,0.15);
+      animation: fall linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">
+      <img src="imagenes/logo.png" alt="Logo">
+      ATHLETIX MX
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="estradapag1.html">ARTICULOS</a></li>
+        <li class="nav-item active"><a class="nav-link" href="estradapag4.html">MINIJUEGOS</a></li>
+        <li class="nav-item"><a class="nav-link" href="estradapag2.html">PROMOCIONES</a></li>
+        <li class="nav-item"><a class="nav-link" href="estradapag5.html">PEDIDOS</a></li>
+        <li class="nav-item"><a class="nav-link" href="estradapag6.html">BIOGRAFIA</a></li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control mr-2" type="search" placeholder="Buscar">
+        <button class="btn btn-light" type="submit">BUSCAR</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <img src="imagenes/banner1.png" class="banner" alt="Banner Principal">
+
+  <!-- Encabezado -->
+  <div class="container">
+    <h1 class="main-title">🏟️ ATHLETIX MULTI-ARCADE 🏟️</h1>
+    <p class="subtitle">Demuestra tus habilidades en 5 disciplinas deportivas de alto rendimiento</p>
+  </div>
+
+  <div class="container px-3">
+    
+    <!-- 1. MINIJUEGO: BOXEO -->
+    <div class="game-card">
+      <h2 class="game-title" style="color: #ff3e3e; text-shadow: 0 0 15px rgba(255,62,62,0.3);">🥊 Boxeo: Heavy Hitter</h2>
+      <div class="game-stats">
+        <div>Record: <span id="boxScore" class="text-danger">0 PSI</span></div>
+      </div>
+      <div class="boxing-ring">
+        <p class="lead">¡Golpea el costal cuando brille en <span class="text-success font-weight-bold">VERDE</span> para liberar tu fuerza!</p>
+        <div class="punching-bag" id="punchBag"></div>
+        <button class="action-btn btn btn-danger mt-3" id="punchBtn" onclick="hitBag()">¡GOLPEAR! 🥊</button>
+        <div id="boxResult" class="h3 font-weight-bold mt-4 text-white-50">ESPERA AL COLOR...</div>
+      </div>
+    </div>
+
+    <!-- 2. MINIJUEGO: FÚTBOL -->
+    <div class="game-card">
+      <h2 class="game-title" style="color: #28a745; text-shadow: 0 0 15px rgba(40,167,11,0.3);">⚽ Fútbol: Penalty Shootout</h2>
+      <div class="game-stats">
+        <div class="text-success">Goles: <span id="ftGoles">0</span></div>
+        <div class="text-danger">Atajadas: <span id="ftAtajadas">0</span></div>
+      </div>
+      <div class="stadium">
+        <div class="goal"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/921/921347.png" class="goalkeeper" id="goalkeeper">
+        <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="ball" id="ball">
+      </div>
+      <div class="text-center mt-4">
+        <p class="lead font-weight-bold">Elige la dirección de tu tiro:</p>
+        <button class="action-btn btn btn-dark mx-2" id="fbL" onclick="shootSoccer('left')">⬅ Izquierda</button>
+        <button class="action-btn btn btn-dark mx-2" id="fbC" onclick="shootSoccer('center')">⬆ Centro</button>
+        <button class="action-btn btn btn-dark mx-2" id="fbR" onclick="shootSoccer('right')">➡ Derecha</button>
+        <div id="soccerResult" class="h3 font-weight-bold mt-4">⚽ LISTO PARA EL TIRO</div>
+      </div>
+    </div>
+
+    <!-- 3. MINIJUEGO: BÁSQUETBOL -->
+    <div class="game-card">
+      <h2 class="game-title" style="color: #ffab00; text-shadow: 0 0 15px rgba(255,171,0,0.3);">🏀 Básquet: Triple Master</h2>
+      <div class="game-stats">
+        <div>Canastas: <span id="bskScore" class="text-warning">0</span></div>
+      </div>
+      <div class="court text-center">
+        <p class="lead">Detén el marcador justo en la <span class="text-success font-weight-bold">zona verde central</span> para encestar un triple limpio.</p>
+        <div class="meter-container">
+          <div class="target-zone"></div>
+          <div class="indicator" id="bskIndicator"></div>
+        </div>
+        <button class="action-btn btn btn-warning text-dark font-weight-bold" id="bskBtn" onclick="shootBasket()">🏀 ¡LANZAR BALÓN!</button>
+        <div id="basketResult" class="h3 font-weight-bold mt-4 text-white-50">PREPARANDO TIRO...</div>
+      </div>
+    </div>
+
+    <!-- 4. MINIJUEGO: BÉISBOL -->
+    <div class="game-card">
+      <h2 class="game-title" style="color: #00b0ff; text-shadow: 0 0 15px rgba(0,176,255,0.3);">⚾ Béisbol: Home Run Derby</h2>
+      <div class="game-stats">
+        <div>Home Runs: <span id="bbScore" class="text-info">0</span></div>
+      </div>
+      <div class="text-center">
+        <p class="lead">Espera el lanzamiento y batea exactamente cuando la pelota cruce la <span class="text-warning font-weight-bold">Zona de Impacto</span>.</p>
+        <div class="field-container mb-3">
+          <div class="hit-zone">ZONA DE IMPACTO PERFECTA</div>
+          <div class="baseball-ball" id="bbBall"></div>
+        </div>
+        <button class="action-btn btn btn-info" id="bbPitchBtn" onclick="pitchBaseball()">Lanzar Bola ⚾</button>
+        <button class="action-btn btn btn-light text-dark font-weight-bold" id="bbSwingBtn" onclick="swingBat()" disabled>¡BATEAR!</button>
+        <div id="bbResult" class="h3 font-weight-bold mt-4 text-white-50">ESPERANDO LANZAMIENTO</div>
+      </div>
+    </div>
+
+    <!-- 5. MINIJUEGO: TENIS -->
+    <div class="game-card">
+      <h2 class="game-title" style="color: #a6ff00; text-shadow: 0 0 15px rgba(166,255,0,0.3);">🎾 Tenis: Grand Slam Quiz</h2>
+      <div class="game-stats">
+        <div>Tu Marcador: <span id="tenScore" class="text-success">0</span></div>
+      </div>
+      <div>
+        <p class="lead text-center mb-4" id="tenQuestion">¿Qué superficie de cancha se utiliza en el prestigioso torneo de Wimbledon?</p>
+        <div class="row">
+          <div class="col-md-6"><button class="quiz-btn" onclick="checkTennis(this, false)">Arcilla Roja (Tierra batida)</button></div>
+          <div class="col-md-6"><button class="quiz-btn" onclick="checkTennis(this, true)">Césped Natural (Pasto)</button></div>
+          <div class="col-md-6"><button class="quiz-btn" onclick="checkTennis(this, false)">Asfalto Duro (Cemento)</button></div>
+          <div class="col-md-6"><button class="quiz-btn" onclick="checkTennis(this, false)">Carpeta Sintética de Goma</button></div>
+        </div>
+        <div id="tennisResult" class="h3 font-weight-bold text-center mt-4">🎾 MATCH POINT</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <h3>🏆 ATHLETIX MULTI-ARCADE v2.0</h3>
+    <p class="text-white-50">Desarrollado con HTML, CSS y JavaScript nativo de alta velocidad. 2026</p>
+  </footer>
+
+  <!-- JAVASCRIPT AVANZADO INTERACTIVO -->
+  <script>
+    /* 1. LOGICA BOXEO (REFLEJOS ADAPTADOS) */
+    let boxReady = false;
+    let boxTime;
+    let maxPsi = 0;
+    const bag = document.getElementById("punchBag");
+    const boxTxt = document.getElementById("boxResult");
+
+    function cycleBoxGame() {
+      bag.style.background = "#bdc3c7";
+      bag.style.boxShadow = "0 10px 20px rgba(0,0,0,0.5)";
+      boxReady = false;
+      let delay = Math.random() * 3000 + 1500;
+      
+      setTimeout(() => {
+        bag.style.background = "#28a745";
+        bag.style.boxShadow = "0 0 30px #28a745";
+        boxTxt.innerHTML = "¡PEGA AHORA!";
+        boxReady = true;
+        boxTime = performance.now();
+      }, delay);
+    }
+
+    function hitBag() {
+      if(boxReady) {
+        let diff = performance.now() - boxTime;
+        boxReady = false;
+        bag.style.transform = "scale(0.9) rotate(-10deg)";
+        setTimeout(() => bag.style.transform = "none", 100);
+
+        let force = Math.round(Math.max(100, 1200 - (diff * 2)));
+        if (force > 1100) force = 1150 + Math.floor(Math.random()*50); 
+        
+        boxTxt.innerHTML = `💥 ¡IMPACTO! Potencia: ${force} PSI`;
+        boxTxt.style.color = "#ffab00";
+        if(force > maxPsi) {
+          maxPsi = force;
+          document.getElementById("boxScore").innerHTML = maxPsi + " PSI";
+        }
+        setTimeout(cycleBoxGame, 2000);
+      } else {
+        boxTxt.innerHTML = "❌ ¡Falta de timing! Golpeaste antes.";
+        boxTxt.style.color = "#dc3545";
+        bag.style.background = "#dc3545";
+        setTimeout(cycleBoxGame, 2000);
+      }
+    }
+    cycleBoxGame();
+
+
+    /* 2. LOGICA FÚTBOL (PENALES OPTIMIZADOS) */
+    let fGoals = 0, fSaves = 0, soccerLock = false;
+    function shootSoccer(dir) {
+      if(soccerLock) return;
+      soccerLock = true;
+      
+      let ball = document.getElementById("ball");
+      let keeper = document.getElementById("goalkeeper");
+      let res = document.getElementById("soccerResult");
+
+      let options = ["left", "center", "right"];
+      let keeperDir = options[Math.floor(Math.random() * 3)];
+
+      // Movimiento visual del portero
+      if(keeperDir == "left") keeper.style.left = "38%";
+      if(keeperDir == "center") keeper.style.left = "50%";
+      if(keeperDir == "right") keeper.style.left = "62%";
+
+      // Movimiento de la pelota
+      let vertical = window.innerWidth < 768 ? "100px" : "120px";
+      if(dir == "left") { ball.style.left = "38%"; ball.style.top = vertical; }
+      if(dir == "center") { ball.style.left = "50%"; ball.style.top = "80px"; }
+      if(dir == "right") { ball.style.left = "62%"; ball.style.top = vertical; }
+
+      setTimeout(() => {
+        if(dir == keeperDir) {
+          res.innerHTML = "🧤 ¡ATAJADA DEL PORTERO!";
+          res.style.color = "#ff3e3e";
+          fSaves++;
+          document.getElementById("ftAtajadas").innerHTML = fSaves;
+        } else {
+          res.innerHTML = "GOOOOOOOL!! ⚽🔥";
+          res.style.color = "#28a745";
+          fGoals++;
+          document.getElementById("ftGoles").innerHTML = fGoals;
+        }
+
+        setTimeout(() => {
+          ball.style.transition = "none";
+          ball.style.top = "";
+          ball.style.left = "50%";
+          keeper.style.left = "50%";
+          res.innerHTML = "⚽ LISTO PARA EL TIRO";
+          res.style.color = "white";
+          setTimeout(() => ball.style.transition = "all 0.65s cubic-bezier(0.1, 0.8, 0.3, 1)", 50);
+          soccerLock = false;
+        }, 1500);
+      }, 650);
+    }
+
+
+    /* 3. LOGICA BÁSQUETBOL (BARRA DE PRECISIÓN MECÁNICA) */
+    let bskScore = 0;
+    let bskPos = 0;
+    let bskDir = 1;
+    let bskRunning = true;
+    const indicator = document.getElementById("bskIndicator");
+
+    function animateMeter() {
+      if(bskRunning) {
+        bskPos += 3.5 * bskDir;
+        if(bskPos >= 100) { bskPos = 100; bskDir = -1; }
+        if(bskPos <= 0) { bskPos = 0; bskDir = 1; }
+        indicator.style.left = bskPos + "%";
+      }
+      requestAnimationFrame(animateMeter);
+    }
+    requestAnimationFrame(animateMeter);
+
+    function shootBasket() {
+      if(!bskRunning) return;
+      bskRunning = false;
+      document.getElementById("bskBtn").disabled = true;
+      
+      let res = document.getElementById("basketResult");
+      // Zona correcta está entre el 41% y el 59% de la barra
+      if(bskPos >= 41 && bskPos <= 59) {
+        bskScore++;
+        document.getElementById("bskScore").innerHTML = bskScore;
+        res.innerHTML = "🏀 ¡ENCESTADO! ¡Limpio de tres puntos! 👌";
+        res.style.color = "#28a745";
+      } else {
+        res.innerHTML = "💥 ¡Pegó en el aro! Tiro fallado.";
+        res.style.color = "#ff3e3e";
+      }
+
+      setTimeout(() => {
+        res.innerHTML = "PREPARANDO TIRO...";
+        res.style.color = "rgba(255,255,255,0.5)";
+        document.getElementById("bskBtn").disabled = false;
+        bskRunning = true;
+      }, 2000);
+    }
+
+
+    /* 4. LOGICA BÉISBOL (TIMING DE LANZAMIENTO) */
+    let bbScore = 0;
+    let pitchActive = false;
+    let pitchStartTime;
+    const bbBall = document.getElementById("bbBall");
+    const bbRes = document.getElementById("bbResult");
+
+    function pitchBaseball() {
+      if(pitchActive) return;
+      pitchActive = true;
+      document.getElementById("bbPitchBtn").disabled = true;
+      document.getElementById("bbSwingBtn").disabled = false;
+      bbRes.innerHTML = "⚾ ¡Viene la bola...!";
+      bbRes.style.color = "white";
+
+      bbBall.style.display = "block";
+      bbBall.style.top = "20px";
+      bbBall.style.transform = "translateX(-50%) scale(0.2)";
+      
+      setTimeout(() => {
+        bbBall.style.transition = "top 1.2s linear, transform 1.2s linear";
+        bbBall.style.top = "220px";
+        bbBall.style.transform = "translateX(-50%) scale(2.5)";
+        pitchStartTime = performance.now();
+      }, 50);
+
+      setTimeout(() => {
+        if(pitchActive) {
+          endPitch("❌ ¡STRIKE! No le diste a nada.", "#ff3e3e");
+        }
+      }, 1300);
+    }
+
+    function swingBat() {
+      if(!pitchActive) return;
+      let timePassed = performance.now() - pitchStartTime;
+      pitchActive = false;
+
+      if(timePassed >= 940 && timePassed <= 1140) {
+        bbScore++;
+        document.getElementById("bbScore").innerHTML = bbScore;
+        endPitch("🚀 ¡HOME RUN! La sacaste del parque", "#00b0ff");
+      } else {
+        endPitch("💨 ¡STRIKE! Abanicaste antes o después.", "#ffab00");
+      }
+    }
+
+    function endPitch(msg, color) {
+      bbRes.innerHTML = msg;
+      bbRes.style.color = color;
+      bbBall.style.display = "none";
+      bbBall.style.transition = "none";
+      document.getElementById("bbPitchBtn").disabled = false;
+      document.getElementById("bbSwingBtn").disabled = true;
+      pitchActive = false;
+    }
+
+
+    /* 5. LOGICA TENIS (MARCADOR EXCLUSIVO DE PUNTOS) */
+    let tennisProgress = 0;
+    const tennisScores = ["0", "15", "30", "40", "¡GAME, SET & MATCH! 🏆"];
+    
+    function checkTennis(btn, isCorrect) {
+      let btns = document.querySelectorAll(".quiz-btn");
+      btns.forEach(b => b.disabled = true);
+
+      let res = document.getElementById("tennisResult");
+
+      if(isCorrect) {
+        btn.classList.add("tennis-correct");
+        tennisProgress++;
+        if(tennisProgress >= tennisScores.length) tennisProgress = tennisScores.length - 1;
+        document.getElementById("tenScore").innerHTML = tennisScores[tennisProgress];
+        res.innerHTML = "🎾 ¡Excelente golpe ganador!";
+        res.style.color = "#a6ff00";
+      } else {
+        btn.classList.add("tennis-incorrect");
+        res.innerHTML = "❌ Bola fuera de la cancha.";
+        res.style.color = "#ff3e3e";
+      }
+    }
+
+    /* SISTEMA DE BALONES FLOTANTES DE FONDO */
+    const sports = ["⚽", "🏀", "⚾", "🥊", "🎾"];
+    setInterval(() => {
+      let particle = document.createElement("div");
+      particle.innerHTML = sports[Math.floor(Math.random() * sports.length)];
+      particle.classList.add("particle");
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.fontSize = Math.random() * 20 + 15 + "px";
+      particle.style.animationDuration = Math.random() * 4 + 4 + "s";
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 7000);
+    }, 600);
+  </script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

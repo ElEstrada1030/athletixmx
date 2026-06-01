@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATHLETIX MX - Pedidos</title>
+  
+  <!-- Bootstrap 4.4.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #050508, #0a1931, #002244);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #000, #0d6efd);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      filter: brightness(0.6) contrast(1.1);
+    }
+
+    /* Formulario contenedor optimizado (Glassmorphism) */
+    .form-container {
+      background: rgba(15, 25, 50, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: white;
+      margin: 50px auto;
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .form-title {
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Estilos de inputs oscuros premium */
+    .form-group label {
+      font-weight: 600;
+      color: #a5c6f3;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control, .form-control:focus {
+      background: rgba(0, 0, 0, 0.3) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white !important;
+      border-radius: 10px;
+      padding: 12px 15px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: #00c3ff;
+      box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+    }
+
+    select.form-control option {
+      background-color: #0a1931;
+      color: white;
+    }
+
+    /* Botón de Envío */
+    .btn-finalizar {
+      width: 100%;
+      font-weight: bold;
+      background: linear-gradient(90deg, #0d6efd, #00c3ff);
+      border: none;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+      cursor: pointer;
+    }
+
+    .btn-finalizar:hover {
+      background: linear-gradient(90deg, #00c3ff, #0d6efd);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 195, 255, 0.6);
+    }
+
+    /* Caja de Checkbox personalizada */
+    .form-check-label {
+      color: #a5c6f3;
+      user-select: none;
+    }
+
+    /* Ticket de Confirmación Dinámico */
+    .receipt-box {
+      display: none;
+      background: #ffffff;
+      color: #111111;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      border-left: 8px solid #28a745;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      animation: fadeInDown 0.5s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navegación Inferior Estilo Barra */
+    .nav-inferior {
+      background: rgba(10, 10, 15, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-inferior a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    
+    .nav-inferior a:hover {
+      color: #00c3ff;
+      text-shadow: 0 0 8px rgba(0, 195, 255, 0.6);
+    }
+
+    /* Footer */
+    footer {
+      background: #030712;
+      padding: 30px;
+      margin-top: 70px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">
+      <img src="Imagenes/logo.png" alt="Logo">
+      ATHLETIX MX
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="estradapag1.html">ARTICULOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="estradapag4.html">MINIJUEGOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="estradapag2.html">PROMOCIONES</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="estradapag5.html">PEDIDOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="estradapag6.html">BIOGRAFIA</a>
+        </li>
+      </ul>
+
+      <form class="form-inline">
+        <input class="form-control mr-2" type="search" placeholder="Buscar">
+        <button class="btn btn-light" type="submit">BUSCAR</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Banner Principal -->
+  <img src="Imagenes/banner1.png" class="banner" alt="Banner Pedidos">
+
+  <!-- Sección del Formulario Responsivo -->
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        
+        <div class="form-container">
+          <h3 class="form-title">📦 REALIZA TU PEDIDO</h3>
+
+          <!-- ID asignado al formulario para manejarlo con JS -->
+          <form id="orderForm" onsubmit="procesarPedido(event)">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail">Correo Electrónico</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@correo.com" required>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputPass">Contraseña de Cuenta</label>
+                <input type="password" class="form-control" id="inputPass" placeholder="••••••••" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputDir1">Dirección de Envío</label>
+              <input type="text" class="form-control" id="inputDir1" placeholder="Calle, número exterior e interior" required>
+            </div>
+
+            <div class="form-group">
+              <label for="inputDir2">Referencias Adicionales</label>
+              <input type="text" class="form-control" id="inputDir2" placeholder="Departamento, color de fachada, entre calles...">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Ciudad</label>
+                <input type="text" class="form-control" id="inputCity" required>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="inputState">Estado</label>
+                <select class="form-control" id="inputState" required>
+                  <option value="" selected disabled>Escoge...</option>
+                  <option>Baja California</option>
+                  <option>CDMX</option>
+                  <option>Jalisco</option>
+                  <option>Nuevo León</option>
+                  <option>Sonora</option>
+                  <option>Sinaloa</option>
+                  <option>Puebla</option>
+                  <option>Veracruz</option>
+                  <option>Oaxaca</option>
+                  <option>Yucatán</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="inputCP">C.P.</label>
+                <input type="text" class="form-control" id="inputCP" maxlength="5" pattern="[0-9]{5}" placeholder="00000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">Recibir notificaciones de rastreo por correo</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-finalizar">FINALIZAR PEDIDO</button>
+          </form>
+
+          <!-- Ticket de Compra Oculto inicialmente -->
+          <div id="receipt" class="receipt-box">
+            <h4 class="font-weight-bold text-success">✔️ ¡PEDIDO REGISTRADO CON ÉXITO!</h4>
+            <hr style="border-color: #ddd;">
+            <p class="mb-1"><strong>Destinatario:</strong> <span id="recEmail"></span></p>
+            <p class="mb-1"><strong>Destino:</strong> <span id="recDir"></span></p>
+            <p class="mb-1"><strong>Código de Rastreo:</strong> <span id="recTrack" class="text-primary font-weight-bold"></span></p>
+            <small class="text-muted d-block mt-3">Tu paquete llegará en un estimado de 3 a 5 días hábiles a través de DHL Express.</small>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menú de Navegación Inferior (Enlaces limpios) -->
+    <nav class="nav-inferior container my-5">
+      <div class="row text-center">
+        <div class="col-sm col-12 my-1"><a href="index.html">INICIO</a></div>
+        <div class="col-sm col-12 my-1"><a href="estradapag1.html">ARTICULOS</a></div>
+        <div class="col-sm col-12 my-1"><a href="estradapag2.html">PROMOCIONES</a></div>
+        <div class="col-sm col-12 my-1"><a href="estradapag3.html">TUTORIALES</a></div>
+        <div class="col-sm col-12 my-1"><a href="estradapag4.html">MINIJUEGOS</a></div>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="text-center">
+    <p class="m-0 text-white-50">© 2026 ATHLETIX MX - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- LÓGICA DE INTERACTIVIDAD DE PEDIDOS -->
+  <script>
+    function procesarPedido(event) {
+      // Evita que la página se recargue automáticamente
+      event.preventDefault();
+
+      // Extraer los datos ingresados
+      const email = document.getElementById("inputEmail").value;
+      const direccion = document.getElementById("inputDir1").value;
+      const ciudad = document.getElementById("inputCity").value;
+      const estado = document.getElementById("inputState").value;
+
+      // Generar un código de rastreo aleatorio simulado
+      const trackingNum = "ATX-" + Math.floor(Math.random() * 900000 + 100000);
+
+      // Inyectar datos al ticket de confirmación
+      document.getElementById("recEmail").innerText = email;
+      document.getElementById("recDir").innerText = `${direccion}, ${ciudad}, ${estado}`;
+      document.getElementById("recTrack").innerText = trackingNum;
+
+      // Mostrar la caja del ticket en pantalla
+      const receiptBox = document.getElementById("receipt");
+      receiptBox.style.display = "block";
+
+      // Auto-desplazamiento suave hacia el ticket para que el usuario lo note
+      receiptBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Limpiar los campos del formulario de manera limpia
+      document.getElementById("orderForm").reset();
+    }
+  </script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

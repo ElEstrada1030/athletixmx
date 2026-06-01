@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATHLETIX MX - Promociones</title>
+  
+  <!-- Bootstrap 4.4.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #000000, #0d6efd);
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #000, #0d6efd);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Títulos */
+    h1, h2 {
+      font-weight: bold;
+    }
+
+    /* Tarjetas de Promociones (Estructura optimizada de cuadrícula) */
+    .promo-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 20px 15px;
+      height: 100%;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .promo-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .promo-card img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin: 0 auto 15px auto;
+      transition: transform 0.3s;
+    }
+
+    .promo-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .titulo-producto {
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .precio-anterior {
+      color: gray;
+      text-decoration: line-through;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .precio-oferta {
+      color: #0d6efd;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    /* Navegación Inferior Estilo Barra */
+    .nav-inferior {
+      background: #000000;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    }
+    .nav-inferior a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .nav-inferior a:hover {
+      color: #0d6efd;
+    }
+    
+    .link-volver {
+      font-weight: bold;
+      color: white;
+      transition: color 0.2s;
+    }
+    .link-volver:hover {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      margin-top: 30px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="imagenes/logo.png" alt="Logo ATHLETIX MX">
+          ATHLETIX MX
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag1.html">ARTICULOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag4.html">MINIJUEGOS</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="estradapag2.html">PROMOCIONES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag5.html">PEDIDOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag6.html">BIOGRAFIA</a>
+            </li>
+          </ul>
+
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-light" type="submit">BUSCAR</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Banner Principal -->
+  <section class="hero-banner">
+    <img src="imagenes/banner1.png" class="banner" alt="Banner Promociones">
+    <div class="container text-center mt-4">
+      <h1>PROMOCIONES</h1>
+      <h2 class="text-warning">PRODUCTOS EN PROMOCIÓN 🔥</h2>
+    </div>
+  </section>
+
+  <!-- Catálogo de Promociones -->
+  <main class="container my-5">
+    <div class="row">
+      
+      <!-- Fila 1 -->
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/balonbarca.jpg" alt="Balón Profesional">
+          <div>
+            <div class="titulo-producto">Balón Profesional</div>
+            <div class="precio-anterior">$600</div>
+            <div class="precio-oferta">$399</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/guantes.jpg" alt="Guantes de Gimnasio">
+          <div>
+            <div class="titulo-producto">Guantes de Gimnasio</div>
+            <div class="precio-anterior">$450</div>
+            <div class="precio-oferta">$299</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/mancuernas.jpg" alt="Mancuernas 10kg">
+          <div>
+            <div class="titulo-producto">Mancuernas 10kg</div>
+            <div class="precio-anterior">$900</div>
+            <div class="precio-oferta">$650</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 2 -->
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/tenis.jpg" alt="Tenis Deportivos">
+          <div>
+            <div class="titulo-producto">Tenis Deportivos</div>
+            <div class="precio-anterior">$1,200</div>
+            <div class="precio-oferta">$799</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/playera.jpg" alt="Playera Deportiva">
+          <div>
+            <div class="titulo-producto">Playera Deportiva</div>
+            <div class="precio-anterior">$350</div>
+            <div class="precio-oferta">$199</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/mochila.jpg" alt="Mochila Deportiva">
+          <div>
+            <div class="titulo-producto">Mochila Deportiva</div>
+            <div class="precio-anterior">$700</div>
+            <div class="precio-oferta">$499</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 3 -->
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/cuerda.jpg" alt="Cuerda para Saltar">
+          <div>
+            <div class="titulo-producto">Cuerda para Saltar</div>
+            <div class="precio-anterior">$200</div>
+            <div class="precio-oferta">$120</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/rodillerascomp.jpg" alt="Rodilleras Deportivas">
+          <div>
+            <div class="titulo-producto">Rodilleras Deportivas</div>
+            <div class="precio-anterior">$300</div>
+            <div class="precio-oferta">$180</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/botella.jpg" alt="Botella Deportiva">
+          <div>
+            <div class="titulo-producto">Botella Deportiva</div>
+            <div class="precio-anterior">$250</div>
+            <div class="precio-oferta">$150</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 4 -->
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/tapete.jpg" alt="Tapete de Yoga">
+          <div>
+            <div class="titulo-producto">Tapete de Yoga</div>
+            <div class="precio-anterior">$500</div>
+            <div class="precio-oferta">$320</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/short.jpg" alt="Short Deportivo">
+          <div>
+            <div class="titulo-producto">Short Deportivo</div>
+            <div class="precio-anterior">$400</div>
+            <div class="precio-oferta">$250</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 mb-4">
+        <div class="promo-card">
+          <img src="imagenes/gorra.jpg" alt="Gorra Deportiva">
+          <div>
+            <div class="titulo-producto">Gorra Deportiva</div>
+            <div class="precio-anterior">$280</div>
+            <div class="precio-oferta">$170</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Menú de Navegación Inferior -->
+    <div class="nav-inferior container my-5">
+      <div class="row text-center">
+        <div class="col"><a href="index.html">INICIO</a></div>
+        <div class="col"><a href="estradapag1.html">ARTICULOS</a></div>
+        <div class="col"><a href="estradapag3.html">TUTORIALES</a></div>
+        <div class="col"><a href="estradapag4.html">MINIJUEGOS</a></div>
+        <div class="col"><a href="estradapag5.html">PEDIDOS</a></div>
+      </div>
+    </div>
+
+    <!-- Enlace de regreso simple -->
+    <div class="text-center my-4">
+      <a href="index.html" class="link-volver">⬅ Volver al inicio</a>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="footer text-center">
+      <p class="m-0">© 2026 ATHLETIX MX</p>
+    </footer>
+  </main>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

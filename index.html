@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATHLETIX MX - Tienda Oficial</title>
+  
+  <!-- Bootstrap 4.4.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #000000, #0d6efd);
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #000, #0d6efd);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    .navbar-brand img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Títulos */
+    h1, h2, h3, h4 {
+      font-weight: bold;
+    }
+
+    /* Tarjetas de Productos */
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+      background: white;
+      color: black;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card img {
+      height: 200px;
+      object-fit: contain;
+      padding: 15px;
+    }
+    .precio {
+      color: #0d6efd;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .btn-comprar {
+      background: #0d6efd;
+      color: white;
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+    .btn-comprar:hover {
+      background: black;
+      color: white;
+    }
+
+    /* Redes Sociales */
+    .redes img {
+      width: 60px;
+      margin: 10px;
+      transition: transform 0.3s ease;
+    }
+    .redes img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: black;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    hr.separador {
+      background: white;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="imagenes/logo.png" alt="Logo ATHLETIX MX">
+          ATHLETIX MX
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="estradapag1.html">ARTICULOS</a></li>
+            <li class="nav-item"><a class="nav-link" href="estradapag4.html">MINIJUEGOS</a></li>
+            <li class="nav-item"><a class="nav-link" href="estradapag2.html">PROMOCIONES</a></li>
+            <li class="nav-item"><a class="nav-link" href="estradapag5.html">PEDIDOS</a></li>
+            <li class="nav-item"><a class="nav-link" href="estradapag6.html">BIOGRAFIA</a></li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-light" type="submit">BUSCAR</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Banner Principal -->
+  <section class="hero-banner">
+    <img src="imagenes/banner1.png" class="banner" alt="Banner Principal ATHLETIX MX">
+    <h1 class="text-center my-4">ATHLETIX MX</h1>
+  </section>
+
+  <!-- Cuerpo Principal de la Tienda -->
+  <main>
+    
+    <!-- Sección Catálogo -->
+    <section class="container my-5">
+      <div class="row">
+        <!-- Producto 1 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/mundial2010.jpg" alt="Balón Oficial">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Balón Oficial</h5>
+              <div>
+                <p class="precio">$899</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/balontrionda.jpg" alt="Balón World Cup">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Balón World Cup</h5>
+              <div>
+                <p class="precio">$1,199</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/guantesrinat.jpg" alt="Guantes Kids">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Guantes Kids</h5>
+              <div>
+                <p class="precio">$649</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/guantesrinatadulto.jpg" alt="Guantes Adulto">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Guantes Adulto</h5>
+              <div>
+                <p class="precio">$899</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/chalecodeentrenamiento.jpg" alt="Chaleco Deportivo">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Chaleco Deportivo</h5>
+              <div>
+                <p class="precio">$199</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/cinturonentrenamiento.jpg" alt="Pack Principiante">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Pack Principiante</h5>
+              <div>
+                <p class="precio">$499</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 7 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/tabladeentrenamiento.jpg" alt="Pack Técnico">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Pack Técnico</h5>
+              <div>
+                <p class="precio">$799</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 8 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/packconos.jpg" alt="Pack Completo">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <h5>Pack Completo</h5>
+              <div>
+                <p class="precio">$1,299</p>
+                <button class="btn btn-comprar btn-block">COMPRAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Promociones -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">PROMOCIONES</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/calcetasantideslizantes.jpg" alt="Calcetas Pack 8">
+            <div class="card-body text-center">
+              <h5>Calcetas Pack 8</h5>
+              <p class="precio">$259</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/balonchampions.jpg" alt="Balón Adidas UCL">
+            <div class="card-body text-center">
+              <h5>Balón Adidas UCL</h5>
+              <p class="precio">$1,099</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="imagenes/mangasbrazo.jpg" alt="Nike Pro">
+            <div class="card-body text-center">
+              <h5>Nike Pro</h5>
+              <p class="precio">$349</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Redes Sociales -->
+    <section class="text-center redes my-5">
+      <h2 class="mb-4">REDES SOCIALES</h2>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="imagenes/Facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="imagenes/instagram.jpg" alt="Instagram"></a>
+      <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer"><img src="imagenes/whatsapp.png" alt="WhatsApp"></a>
+    </section>
+
+    <!-- Valores -->
+    <section class="container text-center my-5 py-3">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h4>🚚 Envíos a todo México</h4>
+          <p class="text-light">Recibe tus productos deportivos en cualquier parte del país.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h4>💯 Calidad garantizada</h4>
+          <p class="text-light">Trabajamos con productos originales y de alto rendimiento.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h4>⚡ Compra segura</h4>
+          <p class="text-light">Pagos protegidos y atención personalizada.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="separador my-5">
+
+    <!-- Newsletter -->
+    <section class="container text-center my-5">
+      <h3>Suscríbete para ofertas exclusivas</h3>
+      <form class="form-inline justify-content-center mt-3">
+        <input type="email" class="form-control mr-2 mb-2 mb-sm-0" placeholder="Tu correo" required>
+        <button type="submit" class="btn btn-primary">Suscribirme</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="footer text-center">
+    <p class="m-0">ATHLETIX MX © 2026</p>
+  </footer>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

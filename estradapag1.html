@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATHLETIX MX - Artículos Deportivos</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #000000, #0d6efd);
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #000, #0d6efd);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Títulos */
+    h1, h2 {
+      font-weight: bold;
+    }
+
+    /* Tarjetas de Artículos (Modernización de las tablas antiguas) */
+    .item-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 20px 15px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .item-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .item-card img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin: 0 auto 15px auto;
+      transition: transform 0.3s;
+    }
+
+    .item-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .item-card a {
+      color: #333333;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+    }
+    
+    .item-card a:hover {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    .precio-azul {
+      font-size: 18px;
+      color: #0d6efd;
+      font-weight: bold;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* Navegación Inferior Estilo Barra */
+    .nav-inferior {
+      background: #000000;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    }
+    .nav-inferior a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .nav-inferior a:hover {
+      color: #0d6efd;
+    }
+    
+    .link-volver {
+      font-weight: bold;
+      color: white;
+      transition: color 0.2s;
+    }
+    .link-volver:hover {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="imagenes/logo.png" alt="Logo ATHLETIX MX">
+          ATHLETIX MX
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="estradapag1.html">ARTICULOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag4.html">MINIJUEGOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag2.html">PROMOCIONES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag5.html">PEDIDOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estradapag6.html">BIOGRAFIA</a>
+            </li>
+          </ul>
+
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-light" type="submit">BUSCAR</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <img src="imagenes/banner1.png" class="banner" alt="Banner Artículos Deportivos">
+    <h1 class="text-center my-4">ARTÍCULOS DEPORTIVOS</h1>
+  </section>
+
+  <main class="container my-5">
+    <div class="row">
+      
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/rodillerascomp.jpg" alt="Rodilleras">
+          <a href="https://www.innovasport.com" target="_blank" rel="noopener noreferrer">
+            Rodilleras
+            <span class="precio-azul">$499 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/protectorfacial.jpg" alt="Protector Facial">
+          <a href="https://www.sportsmed.com.mx" target="_blank" rel="noopener noreferrer">
+            Protector Facial
+            <span class="precio-azul">$349 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/guantesrinat.jpg" alt="Guantes Rinat">
+          <a href="https://www.rinatstore.com" target="_blank" rel="noopener noreferrer">
+            Guantes Rinat
+            <span class="precio-azul">$319 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/Entrenamiento.jpg" alt="Equipo de Entrenamiento">
+          <a href="https://www.decathlon.com.mx" target="_blank" rel="noopener noreferrer">
+            Equipo de Entrenamiento
+            <span class="precio-azul">$377 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/casacas.jpg" alt="Casacas">
+          <a href="https://www.decathlon.com.mx" target="_blank" rel="noopener noreferrer">
+            Casacas
+            <span class="precio-azul">$229 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/barcelona.jpg" alt="Jersey Barcelona">
+          <a href="https://store.fcbarcelona.com" target="_blank" rel="noopener noreferrer">
+            Jersey Barcelona
+            <span class="precio-azul">$1,899 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/madrid.jpg" alt="Jersey Real Madrid">
+          <a href="https://us.shop.realmadrid.com" target="_blank" rel="noopener noreferrer">
+            Jersey Real Madrid
+            <span class="precio-azul">$1,899 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/seleccion.jpg" alt="Jersey Selección">
+          <a href="https://mexicofanshop.com" target="_blank" rel="noopener noreferrer">
+            Jersey Selección
+            <span class="precio-azul">$2,999 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/voit.jpg" alt="Balón Profesional">
+          <a href="https://www.voit.com.mx" target="_blank" rel="noopener noreferrer">
+            Balón Profesional
+            <span class="precio-azul">$1,650 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/conos.jpg" alt="Conos de Entrenamiento">
+          <a href="https://deportesguerra.com.mx" target="_blank" rel="noopener noreferrer">
+            Conos de Entrenamiento
+            <span class="precio-azul">$232 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/pack2espinilleras.jpg" alt="Espinilleras">
+          <a href="#">
+            Espinilleras
+            <span class="precio-azul">$299 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/red.jpg" alt="Red de Portería">
+          <a href="#">
+            Red de Portería
+            <span class="precio-azul">$699 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/messi.jpg" alt="Adidas CrazyFast LM">
+          <a href="https://www.adidas.mx" target="_blank" rel="noopener noreferrer">
+            Adidas CrazyFast LM
+            <span class="precio-azul">$6,200 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/short.jpg" alt="Short Deportivo">
+          <a href="https://www.underarmour.com.mx" target="_blank" rel="noopener noreferrer">
+            Short Deportivo
+            <span class="precio-azul">$639 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/calcetas.jpg" alt="Calcetas Deportivas">
+          <a href="https://www.adidas.mx" target="_blank" rel="noopener noreferrer">
+            Calcetas Deportivas
+            <span class="precio-azul">$499 MXN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="item-card">
+          <img src="imagenes/silbato.jpg" alt="Silbato de Árbitro">
+          <a href="https://www.decathlon.com.mx" target="_blank" rel="noopener noreferrer">
+            Silbato de Árbitro
+            <span class="precio-azul">$422 MXN</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nav-inferior container my-5">
+      <div class="row text-center">
+        <div class="col"><a href="index.html">INICIO</a></div>
+        <div class="col"><a href="estradapag2.html">PROMOCIONES</a></div>
+        <div class="col"><a href="estradapag3.html">TUTORIALES</a></div>
+        <div class="col"><a href="estradapag4.html">MINIJUEGOS</a></div>
+        <div class="col"><a href="estradapag5.html">PEDIDOS</a></div>
+      </div>
+    </div>
+
+    <div class="text-center my-4">
+      <a href="index.html" class="link-volver">⬅ Volver al inicio</a>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
