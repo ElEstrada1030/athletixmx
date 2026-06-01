@@ -183,6 +183,7 @@
   <!-- Encabezado / Navegación -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="index.html">
+      <!-- Corregido a Imagenes/ con I mayúscula -->
       <img src="Imagenes/logo.png" alt="Logo">
       ATHLETIX MX
     </a>
@@ -217,8 +218,8 @@
     </div>
   </nav>
 
-  <!-- Banner Principal -->
-  <img src="Imagenes/banner1.png" class="banner" alt="Banner Pedidos">
+  <!-- Banner Principal - Corregido a Imagenes/ con I mayúscula -->
+  <img src="Imagenes/banner.jpg" class="banner" alt="Banner Pedidos">
 
   <!-- Sección del Formulario Responsivo -->
   <main class="container">
@@ -228,7 +229,6 @@
         <div class="form-container">
           <h3 class="form-title">📦 REALIZA TU PEDIDO</h3>
 
-          <!-- ID asignado al formulario para manejarlo con JS -->
           <form id="orderForm" onsubmit="procesarPedido(event)">
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -291,7 +291,6 @@
             <button type="submit" class="btn-finalizar">FINALIZAR PEDIDO</button>
           </form>
 
-          <!-- Ticket de Compra Oculto inicialmente -->
           <div id="receipt" class="receipt-box">
             <h4 class="font-weight-bold text-success">✔️ ¡PEDIDO REGISTRADO CON ÉXITO!</h4>
             <hr style="border-color: #ddd;">
@@ -306,7 +305,6 @@
       </div>
     </div>
 
-    <!-- Menú de Navegación Inferior (Enlaces limpios) -->
     <nav class="nav-inferior container my-5">
       <div class="row text-center">
         <div class="col-sm col-12 my-1"><a href="index.html">INICIO</a></div>
@@ -318,44 +316,34 @@
     </nav>
   </main>
 
-  <!-- Pie de Página -->
   <footer class="text-center">
     <p class="m-0 text-white-50">© 2026 ATHLETIX MX - Todos los derechos reservados</p>
   </footer>
 
-  <!-- LÓGICA DE INTERACTIVIDAD DE PEDIDOS -->
   <script>
     function procesarPedido(event) {
-      // Evita que la página se recargue automáticamente
       event.preventDefault();
 
-      // Extraer los datos ingresados
       const email = document.getElementById("inputEmail").value;
       const direccion = document.getElementById("inputDir1").value;
       const ciudad = document.getElementById("inputCity").value;
       const estado = document.getElementById("inputState").value;
 
-      // Generar un código de rastreo aleatorio simulado
       const trackingNum = "ATX-" + Math.floor(Math.random() * 900000 + 100000);
 
-      // Inyectar datos al ticket de confirmación
       document.getElementById("recEmail").innerText = email;
       document.getElementById("recDir").innerText = `${direccion}, ${ciudad}, ${estado}`;
       document.getElementById("recTrack").innerText = trackingNum;
 
-      // Mostrar la caja del ticket en pantalla
       const receiptBox = document.getElementById("receipt");
       receiptBox.style.display = "block";
 
-      // Auto-desplazamiento suave hacia el ticket para que el usuario lo note
       receiptBox.scrollIntoView({ behavior: 'smooth' });
 
-      // Limpiar los campos del formulario de manera limpia
       document.getElementById("orderForm").reset();
     }
   </script>
 
-  <!-- Bootstrap Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
